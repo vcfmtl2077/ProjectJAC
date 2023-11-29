@@ -53,7 +53,7 @@ public class project2 {
 				printMenu();
 				System.out.print("Enter your choice (5 to Quit) : ");
 				type = sc.nextInt();
-				if(type==5) {
+				if (type == 5) {
 					System.out.print("You choose 5 and the program is about to quit. GoodBye!");
 					sc.close();
 					return;
@@ -61,8 +61,6 @@ public class project2 {
 			}
 			}
 		}
-		
-
 
 	}
 
@@ -75,22 +73,22 @@ public class project2 {
 	}
 
 	public static void printPattern1(int n) {
-		for(int i=0;i<n;i++) {
-			for(int j=0;j<(n-i);j++) {
-				System.out.print(n-j);
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < (n - i); j++) {
+				System.out.print(n - j);
 			}
 			System.out.println();
 		}
 	}
 
 	public static void printPattern2(int n) {
-		for(int i=0;i<n;i++) {
-			int j=0;
-			while(j<n-i-1) {
+		for (int i = 0; i < n; i++) {
+			int j = 0;
+			while (j < n - i - 1) {
 				System.out.print(" ");
 				j++;
 			}
-			for(int k=1;k<(n-j+1);k++) {
+			for (int k = 1; k < (n - j + 1); k++) {
 				System.out.print(k);
 			}
 			System.out.println();
@@ -98,13 +96,13 @@ public class project2 {
 	}
 
 	public static void printPattern3(int n) {
-		for(int i=0;i<n;i++) {
-			int j=0;
-			while(j<i) {
+		for (int i = 0; i < n; i++) {
+			int j = 0;
+			while (j < i) {
 				System.out.print(" ");
 				j++;
 			}
-			for(int k=j+1;k<n+1;k++) {
+			for (int k = j + 1; k < n + 1; k++) {
 				System.out.print(k);
 			}
 			System.out.println();
@@ -112,6 +110,44 @@ public class project2 {
 	}
 
 	public static void printPattern4(int n) {
+		int r = n / 2;
+		// upper part
+		for (int i = 0; i < r; i++) {
+			int t = 0;
+			if (n % 2 == 0) {
+				t = r - i - 1;
+			} else {
+				t = r - i;
+			}
+
+			for (int j = 0; j < t; j++) {
+				System.out.print(" ");
+			}
+
+			for (int k = 1; k <= 2 * i + 1; k++) {
+				System.out.print(k);
+			}
+			System.out.println();
+
+		}
+
+		// bottom part
+		for (int i = 0; i < n - r; i++) {
+			int t = 0;
+			if (n % 2 == 0) {
+				t = 2 * (r - i) - 1;
+			} else {
+				t = 2 * (r - i) + 1;
+			}
+			for (int j = 0; j < i; j++) {
+				System.out.print(" ");
+			}
+
+			for (int k = 1; k <= t; k++) {
+				System.out.print(k);
+			}
+			System.out.println();
+		}
 
 	}
 }
