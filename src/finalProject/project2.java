@@ -98,7 +98,17 @@ public class project2 {
 	}
 
 	public static void printPattern3(int n) {
-
+		for(int i=0;i<n;i++) {
+			int j=0;
+			while(j<i) {
+				System.out.print(" ");
+				j++;
+			}
+			for(int k=j+1;k<n+1;k++) {
+				System.out.print(k);
+			}
+			System.out.println();
+		}
 	}
 
 	public static void printPattern4(int n) {
