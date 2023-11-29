@@ -10,57 +10,53 @@ public class project2 {
 		System.out.println();
 		System.out.println("Whitch pattern do want to print?");
 		printMenu();
-		System.out.print("Enter your choice (5 to Quit) : ");
-		Scanner sc = new Scanner(System.in);
-		int type = sc.nextInt();
+		
+		int type =0;
 
-		while (type < 1 || type > 5) {
-			System.out.println("Woops! " + type + " is an illegal choice. Tey again.");
-			System.out.print("Please enter a number between 1 and 5 inclusive: ");
+		do {
+			System.out.print("Enter your choice number of the print patterns(5 to Quit) : ");
+			Scanner sc = new Scanner(System.in);
 			type = sc.nextInt();
-			System.out.println();
-		}
-		if (type == 5) {
-			System.out.print("You choose 5 and the program is about to quit. GoodBye!");
-			sc.close();
-			return;
-		}
 
-		System.out.print("How many row would you like to print? (More than 1 please) : ");
-		int rows = sc.nextInt();
-		System.out.println();
-		while (rows <= 1) {
-			System.out.print("How many row would you like to print? (More than 1 please) : ");
-			rows = sc.nextInt();
+			while (type < 1 || type > 5) {
+				System.out.println("Woops! " + type + " is an illegal choice. Tey again.");
+				System.out.print("Please enter a number between 1 and 5 inclusive: ");
+				type = sc.nextInt();
+				System.out.println();
+			}
+			if (type == 5) {
+				System.out.print("You choose 5 and the program is about to quit. GoodBye!");
+				sc.close();
+				return;
+			}
+			System.out.print("How many rows would you like to print? (More than 1 please) : ");
+			int rows = sc.nextInt();
 			System.out.println();
-		}
-		while (type != 5) {
-			switch (rows) {
+			while (rows <= 1) {
+				System.out.print("How many row would you like to print? (More than 1 please) : ");
+				rows = sc.nextInt();
+				System.out.println();
+			}
+			switch (type) {
 			case 1: {
 				printPattern1(rows);
+				break;
 			}
 			case 2: {
 				printPattern2(rows);
+				break;
 			}
 			case 3: {
 				printPattern3(rows);
+				break;
 			}
 			case 4: {
 				printPattern4(rows);
-			}
-			default: {
-				System.out.println("So which pattern do you want to print now?");
-				printMenu();
-				System.out.print("Enter your choice (5 to Quit) : ");
-				type = sc.nextInt();
-				if (type == 5) {
-					System.out.print("You choose 5 and the program is about to quit. GoodBye!");
-					sc.close();
-					return;
-				}
+				break;
 			}
 			}
-		}
+
+		} while (type != 5);
 
 	}
 
