@@ -29,13 +29,41 @@ public class project2 {
 		System.out.print("How many row would you like to print? (More than 1 please) : ");
 		int rows = sc.nextInt();
 		System.out.println();
-		while (rows <=1) {
+		while (rows <= 1) {
 			System.out.print("How many row would you like to print? (More than 1 please) : ");
 			rows = sc.nextInt();
 			System.out.println();
 		}
+		while (type != 5) {
+			switch (rows) {
+			case 1: {
+				printPattern1(rows);
+			}
+			case 2: {
+				printPattern2(rows);
+			}
+			case 3: {
+				printPattern3(rows);
+			}
+			case 4: {
+				printPattern4(rows);
+			}
+			default: {
+				System.out.println("So which pattern do you want to print now?");
+				printMenu();
+				System.out.print("Enter your choice (5 to Quit) : ");
+				type = sc.nextInt();
+				if(type==5) {
+					System.out.print("You choose 5 and the program is about to quit. GoodBye!");
+					sc.close();
+					return;
+				}
+			}
+			}
+		}
 		
-		System.out.println("So whitch pattern do want to print now?");
+		
+
 	}
 
 	public static void printMenu() {
@@ -45,17 +73,25 @@ public class project2 {
 		System.out.println("    54           1234          45        123 ");
 		System.out.println("    5           12345           5         1");
 	}
-	
+
 	public static void printPattern1(int n) {
-		
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<(n-i);j++) {
+				System.out.print(n-j);
+			}
+			System.out.println();
+		}
 	}
+
 	public static void printPattern2(int n) {
-		
+
 	}
+
 	public static void printPattern3(int n) {
-		
+
 	}
+
 	public static void printPattern4(int n) {
-		
+
 	}
 }
