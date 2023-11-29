@@ -5,37 +5,33 @@ import java.util.Scanner;
 public class project2 {
 
 	public static void main(String[] args) {
-		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -");
-		System.out.println();
-		System.out.println();
-		System.out.println("Whitch pattern do want to print?");
+		int choice, rows;
+		
+		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -\n\n");
+		
+		do {
+		System.out.println("\n\nWhitch pattern do want to print?");
 		printMenu();
 		System.out.print("Enter your choice (5 to Quit) : ");
-		Scanner sc = new Scanner(System.in);
-		int type = sc.nextInt();
-
-		while (type < 1 || type > 5) {
-			System.out.println("Woops! " + type + " is an illegal choice. Tey again.");
-			System.out.print("Please enter a number between 1 and 5 inclusive: ");
-			type = sc.nextInt();
-			System.out.println();
-		}
-		if (type == 5) {
-			System.out.print("You choose 5 and the program is about to quit. GoodBye!");
-			sc.close();
-			return;
-		}
-
-		System.out.print("How many row would you like to print? (More than 1 please) : ");
-		int rows = sc.nextInt();
-		System.out.println();
-		while (rows <=1) {
+		choice = inputckeck( 1, 5);
+		if(choice != 5) {
 			System.out.print("How many row would you like to print? (More than 1 please) : ");
-			rows = sc.nextInt();
-			System.out.println();
+			rows = inputckeck( 2, 1000);
+			
+			switch(choice) {
+			case 1: printPattern1(rows);
+					break;
+			case 2: printPattern2(rows);
+					break;
+			case 3:printPattern3(rows);
+				   break;
+			case 4: printPattern4(rows, (int) Math.ceil((double) rows/2),1); //no of top or bottom rows = spaces = Math.ceil((double) rows/2)
+			}
 		}
+		}while(choice != 5);
 		
-		System.out.println("So whitch pattern do want to print now?");
+		System.out.print("You choose 5 and the program is about to quit. GoodBye!");
+
 	}
 
 	public static void printMenu() {
@@ -46,16 +42,111 @@ public class project2 {
 		System.out.println("    5           12345           5         1");
 	}
 	
+	public static int inputckeck( int range1, int range2){
+		boolean flag;
+		int num;
+
+		Scanner sc = new Scanner(System.in);
+
+		do  {
+			num = sc.nextInt();
+			if(num < range1 || num > range2){
+				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+				flag = true;
+			}else {
+				flag = false;
+			}
+
+		}while(flag);
+		
+		return num;
+	}
+	
 	public static void printPattern1(int n) {
+		int i,j;
+		
+		for(i=n; i>0; i--) {
+			for(j=0; j< i; j++) {
+				System.out.print(n-j);
+			}
+			System.out.println();
+		}
 		
 	}
+	
 	public static void printPattern2(int n) {
+		int i,j,s=0;
+		
+		for(i=1; i<=n; i++) {
+			//spaces
+			for(s=0; s<n-i ; s++) {
+				System.out.print(" ");
+			}
+			for(j=1; j<=i; j++) {
+				System.out.print(j);
+			}
+			
+			System.out.println();
+		}
+		
 		
 	}
+	
 	public static void printPattern3(int n) {
+		int i,j,s=0;
+		
+		for(i=n; i>0; i--) {
+			//spaces
+			for(s=0; s<n-i ; s++) {
+				System.out.print(" ");
+			}
+			for(j=i; j>0; j--) {
+				System.out.print(n-j+1);
+			}
+			
+			System.out.println();
+		}
+		
 		
 	}
-	public static void printPattern4(int n) {
+	
+	public static void printPattern4(int n, int space,int numbers) {
+		int i;
+		//base condition
+		if(space == 0) {
+			return;
+		}
+		
+		//spaces
+		for(i=0 ; i<=space ; i++) {
+			System.out.print(" ");
+		}
+		
+		//printing numbers
+		for(i=1; i<=numbers; i++) {
+			System.out.print(i);
+		}
+		
+		System.out.println();
+		
+		
+		printPattern4(n, space-1, numbers+2);
+		
+		//bottom part executed in recursion
+		
+		//condition space>1 is to skip repeated middle line in case n is odd number
+		if( space >1 || (n%2 == 0)) {	
+				//spaces
+				for(i=0 ; i<=space ; i++) {
+					System.out.print(" ");
+				}
+				
+				for(i=1; i<=numbers; i++) {
+					System.out.print(i);
+				}
+				
+				System.out.println();
+		}
 		
 	}
 }
