@@ -34,7 +34,7 @@ public class project1 {
 		double QST = taxValue((sum+ GST), qstRate );
 		
 		if(inputErrors > 0) {
-			System.out.printf("You have entered %d invalid inputs", inputErrors);
+			System.out.printf("You have entered %d invalid inputs\n", inputErrors);
 		}
 
 		System.out.printf("Sub-Total: $ %.2f \n",sum);
