@@ -7,7 +7,7 @@ public class project1 {
 	public static void main(String[] args) {
 		System.out.print("Please enter the number of items bought [1...10]:");
 		Scanner sc = new Scanner(System.in);
-		int nItems = sc.nextInt();
+		int nItems =(int)sc.nextDouble();
 		System.out.println();
 		// Verify the item input number
 		while (nItems < 1 || nItems > 10) {
