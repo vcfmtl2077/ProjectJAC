@@ -12,7 +12,7 @@ public class project1 {
 		// Verify the item input number
 		while (nItems < 1 || nItems > 10) {
 			System.out.print("Please enter the number of items bought [1...10]: ");
-			nItems = sc.nextInt();
+			nItems = (int)sc.nextDouble();
 			System.out.println();
 		}
 

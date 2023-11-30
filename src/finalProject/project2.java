@@ -13,12 +13,12 @@ public class project2 {
 			printMenu();
 			System.out.println("Enter your choice number of the print patterns(5 to Quit) : ");
 			Scanner sc = new Scanner(System.in);
-			type = sc.nextInt();
+			type = (int)sc.nextDouble();
 
 			while (type < 1 || type > 5) {
 				System.out.println("Woops! " + type + " is an illegal choice. Try again.");
 				System.out.print("Please enter a number between 1 and 5 inclusive: ");
-				type = sc.nextInt();
+				type = (int)sc.nextDouble();;
 				System.out.println();
 			}
 			if (type == 5) {
@@ -27,11 +27,11 @@ public class project2 {
 				return;
 			}
 			System.out.print("How many rows would you like to print? (More than 1 please) : ");
-			int rows = sc.nextInt();
+			int rows = (int)sc.nextDouble();;
 			System.out.println();
 			while (rows <= 1) {
 				System.out.print("How many row would you like to print? (More than 1 please) : ");
-				rows = sc.nextInt();
+				rows = (int)sc.nextDouble();;
 				System.out.println();
 			}
 			switch (type) {
