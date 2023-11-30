@@ -5,21 +5,18 @@ import java.util.Scanner;
 public class project2 {
 
 	public static void main(String[] args) {
-		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -");
-		System.out.println();
-		System.out.println();
-		System.out.println("Whitch pattern do want to print?");
-		printMenu();
-		
+		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -\n\n");
+
 		int type =0;
 
 		do {
-			System.out.print("Enter your choice number of the print patterns(5 to Quit) : ");
+			printMenu();
+			System.out.println("Enter your choice number of the print patterns(5 to Quit) : ");
 			Scanner sc = new Scanner(System.in);
 			type = sc.nextInt();
 
 			while (type < 1 || type > 5) {
-				System.out.println("Woops! " + type + " is an illegal choice. Tey again.");
+				System.out.println("Woops! " + type + " is an illegal choice. Try again.");
 				System.out.print("Please enter a number between 1 and 5 inclusive: ");
 				type = sc.nextInt();
 				System.out.println();
