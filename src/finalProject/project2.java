@@ -7,7 +7,7 @@ public class project2 {
 	public static void main(String[] args) {
 		int choice, rows;
 		
-		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -\n\n");
+		System.out.print(" - - - Welcome to Wei's Triangle/Diamond Printer - - -\n");
 		
 		do {
 		System.out.println("\n\nWhitch pattern do want to print?");
@@ -15,8 +15,8 @@ public class project2 {
 		System.out.print("Enter your choice (5 to Quit) : ");
 		choice = inputckeck( 1, 5);
 		if(choice != 5) {
-			System.out.print("How many row would you like to print? (More than 1 please) : ");
-			rows = inputckeck( 2, 1000);
+			System.out.print("How many row would you like to print ? range [1-9] : ");
+			rows = inputckeck( 1, 9);
 			
 			switch(choice) {
 			case 1: printPattern1(rows);
@@ -44,14 +44,15 @@ public class project2 {
 	
 	public static int inputckeck( int range1, int range2){
 		boolean flag;
-		int num;
+		double num;
 
 		Scanner sc = new Scanner(System.in);
 
 		do  {
-			num = sc.nextInt();
-			if(num < range1 || num > range2){
-				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+			num = sc.nextDouble();
+		
+			if((num < range1 || num > range2) || (num%1 > 0)){
+				System.out.print("Your input should be integer in this range ["+ range1 + "-" + range2 + "] : ");
 				flag = true;
 			}else {
 				flag = false;
@@ -59,7 +60,7 @@ public class project2 {
 
 		}while(flag);
 		
-		return num;
+		return ((int)num);
 	}
 	
 	public static void printPattern1(int n) {
@@ -82,14 +83,13 @@ public class project2 {
 			for(s=0; s<n-i ; s++) {
 				System.out.print(" ");
 			}
+			
 			for(j=1; j<=i; j++) {
 				System.out.print(j);
 			}
 			
 			System.out.println();
 		}
-		
-		
 	}
 	
 	public static void printPattern3(int n) {
@@ -100,14 +100,13 @@ public class project2 {
 			for(s=0; s<n-i ; s++) {
 				System.out.print(" ");
 			}
+			
 			for(j=i; j>0; j--) {
 				System.out.print(n-j+1);
 			}
 			
 			System.out.println();
 		}
-		
-		
 	}
 	
 	public static void printPattern4(int n, int space,int numbers) {
@@ -128,7 +127,6 @@ public class project2 {
 		}
 		
 		System.out.println();
-		
 		
 		printPattern4(n, space-1, numbers+2);
 		

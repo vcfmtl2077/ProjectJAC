@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class project1 {
 
+	private static int inputErrors = 0;
+	
 	public static void main(String[] args) {
 		int nItems;
 		double sum;
@@ -19,22 +21,27 @@ public class project1 {
 		// Prices summation
 		sum = pricesSum(pArray);
 
-		//  GST input value
-		System.out.print("\nPlease enter the tax rate of GST in % [0...14]: ");
+		//  GST Rate value
+		System.out.print("Please enter the tax rate of GST in % [0...14]: ");
 		double gstRate = taxRate(14.0);
 
-		//  QST input value
-		System.out.print("\nPlease enter the tax rate of QST in % [0...17]: ");
+		//  QST Rate value
+		System.out.print("Please enter the tax rate of QST in % [0...17]: ");
 		double qstRate = taxRate(17.0);
 		
 
 		double GST = taxValue(sum, gstRate );
 		double QST = taxValue((sum+ GST), qstRate );
+		
+		if(inputErrors > 0) {
+			System.out.printf("You have entered %d invalid inputs\n", inputErrors);
+		}
 
-		System.out.println("\nSub-Total: " + sum);
-		System.out.println("GST: $ " + GST);
-		System.out.println("QST: $ " + QST);
-		System.out.println("Total: $ " + (sum + GST + QST));
+		System.out.printf("Sub-Total: $ %.2f \n",sum);
+		System.out.printf("GST: $ %.2f \n", GST);
+		System.out.printf("QST: $ %.2f \n" , QST);
+		System.out.printf("Total: $ %.2f \n" , (sum + GST + QST));
+		
 		
 	}
 	
@@ -58,7 +65,7 @@ public class project1 {
 		double[] pArray = new double[n];
 		
 		for(i=0; i< n; i++) {
-			System.out.print("\nPlease enter the price of item " + (i+1) + " [1...1000]: ");
+			System.out.print("Please enter the price of item " + (i+1) + " [1...1000]: ");
 				pArray[i] = inputckeck(1.0, 1000.0);
 			}
 		
@@ -78,14 +85,16 @@ public class project1 {
 	
 	public static int inputckeck( int range1, int range2){
 		boolean flag;
-		int num;
+		double num;
 
 		Scanner sc = new Scanner(System.in);
 
 		do  {
-			num = sc.nextInt();
-			if(num < range1 || num > range2){
-				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+			num = sc.nextDouble();
+		
+			if((num < range1 || num > range2) || (num%1 > 0)){
+				System.out.print("Your input should be integer in this range ["+ range1 + "-" + range2 + "] : ");
+				inputErrors++;
 				flag = true;
 			}else {
 				flag = false;
@@ -93,7 +102,7 @@ public class project1 {
 
 		}while(flag);
 		
-		return num;
+		return ((int)num);
 	}
 	
 	public static double inputckeck( double range1, double range2){
@@ -106,6 +115,7 @@ public class project1 {
 			num = sc.nextDouble();
 			if(num < range1 || num > range2){
 				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+				inputErrors++;
 				flag = true;
 			}else {
 				flag = false;
