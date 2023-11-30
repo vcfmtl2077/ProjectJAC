@@ -5,63 +5,117 @@ import java.util.Scanner;
 public class project1 {
 
 	public static void main(String[] args) {
-		System.out.print("Please enter the number of items bought [1...10]:");
-		Scanner sc = new Scanner(System.in);
-		int nItems = sc.nextInt();
-		System.out.println();
-		// Verify the item input number
-		while (nItems < 1 || nItems > 10) {
-			System.out.print("Please enter the number of items bought [1...10]: ");
-			nItems = sc.nextInt();
-			System.out.println();
-		}
+		int nItems;
+		double sum;
+		double[] pArray = null;
+		
+		// Input number of items
+		System.out.print("Please enter the number of items bought [1...10]: ");
+		nItems = inputckeck(1, 10);
 
-		// Verify each item input price
-		int itemIndex = 1;
-		double pItems = 0.0;
-		double[] pArray = new double[nItems];
-		while (itemIndex <= nItems) {
-			System.out.print("Please enter the price of item " + itemIndex + " [1...1000]: ");
-			pItems = sc.nextDouble();
-			if (pItems >= 1 && pItems <= 1000) {
-				pArray[itemIndex - 1] = pItems;
-				itemIndex++;
-			}
-			System.out.println();
-		}
+		// Input Items
+		pArray = InputItems(nItems);
+		
+		// Prices summation
+		sum = pricesSum(pArray);
 
-		// Verify GST input value
-		System.out.print("Please enter the tax rate of GST in % [0...14]:");
-		double gst = sc.nextDouble();
-		while (gst < 0 || gst > 14) {
-			System.out.print("Please enter the tax rate of GST in % [0...14]:");
-			gst = sc.nextDouble();
-		}
-		System.out.println();
+		//  GST input value
+		System.out.print("\nPlease enter the tax rate of GST in % [0...14]: ");
+		double gstRate = taxRate(14.0);
 
-		// Verify QST input value
-		System.out.print("Please enter the tax rate of QST in % [0...17]:");
-		double qst = sc.nextDouble();
-		while (qst < 0 || qst > 17) {
-			System.out.print("Please enter the tax rate of QST in % [0...17]:");
-			qst = sc.nextDouble();
-		}
-		System.out.println();
+		//  QST input value
+		System.out.print("\nPlease enter the tax rate of QST in % [0...17]: ");
+		double qstRate = taxRate(17.0);
+		
 
-		System.out.println("You have entered " + nItems + " invalid inputs.");
+		double GST = taxValue(sum, gstRate );
+		double QST = taxValue((sum+ GST), qstRate );
 
-		double sum = 0;
-		for (int i = 0; i < pArray.length; i++) {
-			sum += pArray[i];
-		}
-
-		double gstValue = sum * gst / 100;
-		double qstValue = (sum + gstValue) * qst / 100;
-
-		System.out.println("Sub Total: $ " + (sum + gstValue + qstValue));
-		System.out.println("GST: $ " + gstValue);
-		System.out.println("QST: $ " + qstValue);
-
+		System.out.println("\nSub-Total: " + sum);
+		System.out.println("GST: $ " + GST);
+		System.out.println("QST: $ " + QST);
+		System.out.println("Total: $ " + (sum + GST + QST));
+		
 	}
+	
+	
+	
+	public static double taxValue(double sum,double taxRate ) {
+		
+		return sum * taxRate;
+	}
+	
+	public static double taxRate(double maxTaxRange) {
+		
+		double tax = inputckeck(0.0, maxTaxRange);
+		tax = tax / 100;
+		
+		return tax;
+	}
+	
+	public static double[] InputItems(int n){
+		int i;
+		double[] pArray = new double[n];
+		
+		for(i=0; i< n; i++) {
+			System.out.print("\nPlease enter the price of item " + (i+1) + " [1...1000]: ");
+				pArray[i] = inputckeck(1.0, 1000.0);
+			}
+		
+		return pArray;
+	}
+	
+	public static double pricesSum(double[] arr)
+	{   int i;
+		double sum = 0;
+		
+		for (i = 0; i < arr.length; i++) {
+				sum = sum + arr[i];
+		}
+		
+		return sum;
+	}
+	
+	public static int inputckeck( int range1, int range2){
+		boolean flag;
+		int num;
+
+		Scanner sc = new Scanner(System.in);
+
+		do  {
+			num = sc.nextInt();
+			if(num < range1 || num > range2){
+				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+				flag = true;
+			}else {
+				flag = false;
+			}
+
+		}while(flag);
+		
+		return num;
+	}
+	
+	public static double inputckeck( double range1, double range2){
+		boolean flag;
+		double num;
+
+		Scanner sc = new Scanner(System.in);
+
+		do  {
+			num = sc.nextDouble();
+			if(num < range1 || num > range2){
+				System.out.print("Your input should be in this range ["+ range1 + "-" + range2 + "] : ");
+				flag = true;
+			}else {
+				flag = false;
+			}
+
+		}while(flag);
+		
+		return num;
+	}
+
+	
 
 }
