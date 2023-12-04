@@ -1,4 +1,4 @@
-package oop.assignment.projectb;
+package oop.assignment1.projectb;
 
 public class projectB {
 

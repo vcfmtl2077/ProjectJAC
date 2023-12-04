@@ -1,6 +1,6 @@
-package oop.assignment.projecta;
+package oop.assignment1.projecta;
 
-import oop.assignment.projecta.model.Computer;
+import oop.assignment1.projecta.model.Computer;
 
 public class projectA {
 

@@ -1,4 +1,4 @@
-package oop.assignment.projecta.model;
+package oop.assignment1.projecta.model;
 
 import java.util.Objects;
 
