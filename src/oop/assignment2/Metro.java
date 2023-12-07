@@ -13,9 +13,8 @@ public class Metro extends Train {
 		this.totalNumberOfStops = totalNumberOfStops;
 	}
 
-	public Metro() {
-		super();
-		this.setSerialNumber(new Random().nextLong(0, Long.MAX_VALUE));
-	}
+//	public Metro() {
+//		this.setSerialNumber(new Random().nextLong(0, Long.MAX_VALUE));
+//	}
 
 }
