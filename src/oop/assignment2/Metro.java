@@ -15,7 +15,7 @@ public class Metro extends Train {
 
 	public Metro() {
 		super();
-		this.setSerialNumber(new Random().nextLong(0,Long.MAX_VALUE));
+		this.setSerialNumber(new Random().nextLong(0, Long.MAX_VALUE));
 	}
-	
+
 }
