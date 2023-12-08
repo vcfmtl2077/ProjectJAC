@@ -1,4 +1,4 @@
-package oop.assignment2;
+package oop.assignment2.p1.transportation;
 
 public class WheeledTransportation {
 	private int numberOfWheels;

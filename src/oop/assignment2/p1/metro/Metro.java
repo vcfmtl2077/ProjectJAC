@@ -1,6 +1,6 @@
-package oop.assignment2;
+package oop.assignment2.p1.metro;
 
-import java.util.Random;
+import oop.assignment2.p1.train.Train;
 
 public class Metro extends Train {
 	private int totalNumberOfStops;
@@ -13,8 +13,8 @@ public class Metro extends Train {
 		this.totalNumberOfStops = totalNumberOfStops;
 	}
 
-//	public Metro() {
-//		this.setSerialNumber(new Random().nextLong(0, Long.MAX_VALUE));
-//	}
+	public Metro() {
+		super();
+	}
 
 }
