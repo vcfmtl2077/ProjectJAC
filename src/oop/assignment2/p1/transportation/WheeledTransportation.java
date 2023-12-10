@@ -29,4 +29,21 @@ public class WheeledTransportation {
 		this.serialNumber = serialNumber;
 	}
 
+	public WheeledTransportation(int numberOfWheels, double maximumSpeed) {
+		super();
+		this.numberOfWheels = numberOfWheels;
+		this.maximumSpeed = maximumSpeed;
+		this.serialNumber++;
+	}
+
+	public WheeledTransportation() {
+		super();
+	}
+
+	public WheeledTransportation(WheeledTransportation wt) {
+		super();
+		this.maximumSpeed = wt.maximumSpeed;
+		this.numberOfWheels = wt.numberOfWheels;
+		this.serialNumber++;
+	}
 }

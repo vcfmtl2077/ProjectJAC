@@ -20,4 +20,18 @@ public class Metro extends Train {
 		this.serialNumberCounter++;
 	}
 
+	public Metro(int totalNumberOfStops) {
+		super();
+		this.totalNumberOfStops = totalNumberOfStops;
+		this.setSerialNumber(this.serialNumberCounter);
+		this.serialNumberCounter++;
+	}
+
+	public Metro(Metro mt) {
+		super();
+		this.totalNumberOfStops = mt.totalNumberOfStops;
+		this.setSerialNumber(this.serialNumberCounter);
+		this.serialNumberCounter++;
+	}
+
 }

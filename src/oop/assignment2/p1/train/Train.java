@@ -34,14 +34,32 @@ public class Train extends WheeledTransportation {
 		this.destinationStation = destinationStation;
 	}
 
+	private long getNextSerialNumber() {
+		return this.serialNumberCounter;
+	}
+
 	public Train() {
 		super();
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
 	}
-	
-	private long getNextSerialNumber() {
-		return this.serialNumberCounter;
+
+	public Train(int numberOfVehicles, String startingStation, String destinationStation) {
+		super();
+		this.numberOfVehicles = numberOfVehicles;
+		this.startingStation = startingStation;
+		this.destinationStation = destinationStation;
+		this.setSerialNumber(this.serialNumberCounter);
+		this.serialNumberCounter++;
+	}
+
+	public Train(Train tr) {
+		super();
+		this.destinationStation = tr.destinationStation;
+		this.numberOfVehicles = tr.numberOfVehicles;
+		this.startingStation = tr.startingStation;
+		this.setSerialNumber(this.serialNumberCounter);
+		this.serialNumberCounter++;
 	}
 
 	@Override
@@ -63,6 +81,4 @@ public class Train extends WheeledTransportation {
 				&& numberOfVehicles == other.numberOfVehicles && Objects.equals(startingStation, other.startingStation);
 	}
 
-	
-	
 }
