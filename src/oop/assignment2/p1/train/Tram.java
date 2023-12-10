@@ -1,8 +1,8 @@
 package oop.assignment2.p1.train;
 
-import oop.assignment2.p1.transportation.WheeledTransportation;
+import oop.assignment2.p1.metro.Metro;
 
-public class Tram extends WheeledTransportation {
+public class Tram extends Metro {
 	private int yearOfCreation;
 	private static int serialNumberCounter = 30000;
 	public int getYearOfCreation() {
