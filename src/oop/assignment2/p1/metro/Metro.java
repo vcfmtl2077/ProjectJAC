@@ -4,6 +4,7 @@ import oop.assignment2.p1.train.Train;
 
 public class Metro extends Train {
 	private int totalNumberOfStops;
+	private static int serialNumberCounter = 25000;
 
 	public int getTotalNumberOfStops() {
 		return totalNumberOfStops;
@@ -15,6 +16,8 @@ public class Metro extends Train {
 
 	public Metro() {
 		super();
+		this.setSerialNumber(this.serialNumberCounter);
+		this.serialNumberCounter++;
 	}
 
 }
