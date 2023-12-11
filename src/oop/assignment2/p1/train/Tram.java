@@ -20,8 +20,9 @@ public class Tram extends Metro {
 		this.serialNumberCounter++;
 	}
 
-	public Tram(int yearOfCreation) {
-		super();
+	public Tram(int numberOfWheels, double maximumSpeed, int numberOfVehicles, String startingStation,
+			String destinationStation, int totalNumberOfStops, int yearOfCreation) {
+		super(numberOfWheels, maximumSpeed, numberOfVehicles, startingStation, destinationStation, totalNumberOfStops);
 		this.yearOfCreation = yearOfCreation;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;

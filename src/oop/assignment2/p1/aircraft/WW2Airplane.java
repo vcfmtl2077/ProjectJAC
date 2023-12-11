@@ -18,8 +18,8 @@ public class WW2Airplane extends Aircraft {
 		this.serialNumberCounter++;
 	}
 
-	public WW2Airplane(boolean twinEngine) {
-		super();
+	public WW2Airplane(double price, double maximumElevation, boolean twinEngine) {
+		super(price, maximumElevation);
 		this.twinEngine = twinEngine;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;

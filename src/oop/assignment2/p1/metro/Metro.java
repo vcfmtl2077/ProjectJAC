@@ -20,8 +20,9 @@ public class Metro extends Train {
 		this.serialNumberCounter++;
 	}
 
-	public Metro(int totalNumberOfStops) {
-		super();
+	public Metro(int numberOfWheels, double maximumSpeed, int numberOfVehicles, String startingStation,
+			String destinationStation, int totalNumberOfStops) {
+		super(numberOfWheels, maximumSpeed, numberOfVehicles, startingStation, destinationStation);
 		this.totalNumberOfStops = totalNumberOfStops;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;

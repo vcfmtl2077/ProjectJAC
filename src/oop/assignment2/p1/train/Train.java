@@ -44,8 +44,9 @@ public class Train extends WheeledTransportation {
 		this.serialNumberCounter++;
 	}
 
-	public Train(int numberOfVehicles, String startingStation, String destinationStation) {
-		super();
+	public Train(int numberOfWheels, double maximumSpeed, int numberOfVehicles, String startingStation,
+			String destinationStation) {
+		super(numberOfWheels,maximumSpeed);
 		this.numberOfVehicles = numberOfVehicles;
 		this.startingStation = startingStation;
 		this.destinationStation = destinationStation;

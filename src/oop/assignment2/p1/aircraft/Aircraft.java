@@ -4,6 +4,7 @@ public class Aircraft {
 	private double price;
 	private double maximumElevation;
 	private long serialNumber;
+	private static int serialNumberCounter;
 
 	public double getPrice() {
 		return price;
@@ -31,20 +32,24 @@ public class Aircraft {
 
 	public Aircraft() {
 		super();
+		this.serialNumber = serialNumberCounter;
+		serialNumberCounter++;
 	}
 
 	public Aircraft(double price, double maximumElevation) {
 		super();
 		this.price = price;
 		this.maximumElevation = maximumElevation;
-		this.serialNumber++;
+		this.serialNumber = serialNumberCounter;
+		serialNumberCounter++;
 	}
 
 	public Aircraft(Aircraft ac) {
 		super();
 		this.price = ac.price;
 		this.maximumElevation = ac.maximumElevation;
-		this.serialNumber = ac.serialNumber++;
+		this.serialNumber = serialNumberCounter;
+		serialNumberCounter++;
 	}
 
 }
