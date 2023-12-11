@@ -58,6 +58,6 @@ public class Monowheel extends WheeledTransportation {
 		Monowheel other = (Monowheel) obj;
 		return Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed())
 				&& this.getNumberOfWheels() == other.getNumberOfWheels() && Double
-						.doubleToLongBits(this.getMaximumWeight()) == Double.doubleToLongBits(other.getMaximumWeight());
+						.doubleToLongBits(this.maximumWeight) == Double.doubleToLongBits(other.maximumWeight);
 	}
 }

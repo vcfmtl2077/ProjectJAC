@@ -64,7 +64,7 @@ public class Metro extends Train {
 				&& Objects.equals(this.getStartingStation(), other.getStartingStation())
 				&& Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed())
 				&& this.getNumberOfWheels() == other.getNumberOfWheels()
-				&& this.getTotalNumberOfStops() == other.getTotalNumberOfStops();
+				&& this.totalNumberOfStops == other.totalNumberOfStops;
 	}
 
 }

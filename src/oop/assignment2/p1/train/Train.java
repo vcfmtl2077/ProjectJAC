@@ -83,9 +83,9 @@ public class Train extends WheeledTransportation {
 		double i = this.getMaximumSpeed();
 		double j = other.getMaximumSpeed();
 		
-		return Objects.equals(this.getDestinationStation(), other.getDestinationStation())
-				&& this.getNumberOfVehicles() == other.getNumberOfVehicles()
-				&& Objects.equals(this.getStartingStation(), other.getStartingStation())
+		return Objects.equals(this.destinationStation, other.destinationStation)
+				&& this.numberOfVehicles == other.numberOfVehicles
+				&& Objects.equals(this.startingStation, other.startingStation)
 				&& this.getMaximumSpeed() == other.getMaximumSpeed()
 				&& this.getNumberOfWheels() == other.getNumberOfWheels();
 	}

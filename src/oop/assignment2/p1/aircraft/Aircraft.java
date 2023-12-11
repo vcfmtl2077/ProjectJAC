@@ -73,9 +73,9 @@ public class Aircraft {
 		if (getClass() != obj.getClass())
 			return false;
 		Aircraft other = (Aircraft) obj;
-		return Double.doubleToLongBits(this.getMaximumElevation()) == Double
-				.doubleToLongBits(other.getMaximumElevation())
-				&& Double.doubleToLongBits(this.getPrice()) == Double.doubleToLongBits(other.getPrice());
+		return Double.doubleToLongBits(this.maximumElevation) == Double
+				.doubleToLongBits(other.maximumElevation)
+				&& Double.doubleToLongBits(this.price) == Double.doubleToLongBits(other.price);
 	}
 
 }

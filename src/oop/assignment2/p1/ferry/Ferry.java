@@ -73,7 +73,7 @@ public class Ferry {
 		if (getClass() != obj.getClass())
 			return false;
 		Ferry other = (Ferry) obj;
-		return Double.doubleToLongBits(this.getMaximumLoad()) == Double.doubleToLongBits(other.getMaximumLoad())
-				&& Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed());
+		return Double.doubleToLongBits(this.maximumLoad) == Double.doubleToLongBits(other.maximumLoad)
+				&& Double.doubleToLongBits(this.maximumSpeed) == Double.doubleToLongBits(other.maximumSpeed);
 	}
 }

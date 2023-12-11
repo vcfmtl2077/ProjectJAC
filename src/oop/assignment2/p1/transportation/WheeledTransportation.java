@@ -74,8 +74,8 @@ public class WheeledTransportation {
 		if (getClass() != obj.getClass())
 			return false;
 		WheeledTransportation other = (WheeledTransportation) obj;
-		return Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed())
-				&& this.getNumberOfWheels() == other.getNumberOfWheels();
+		return Double.doubleToLongBits(this.maximumSpeed) == Double.doubleToLongBits(other.maximumSpeed)
+				&& this.numberOfWheels == other.numberOfWheels;
 	}
 
 }

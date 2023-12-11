@@ -66,7 +66,7 @@ public class Tram extends Metro {
 				&& this.getMaximumSpeed() == other.getMaximumSpeed()
 				&& this.getNumberOfWheels() == other.getNumberOfWheels()
 				&& this.getTotalNumberOfStops() == other.getTotalNumberOfStops()
-				&& this.getYearOfCreation() == other.getYearOfCreation();
+				&& this.yearOfCreation == other.yearOfCreation;
 	}
 
 }

@@ -59,7 +59,7 @@ public class WW2Airplane extends Aircraft {
 		return Double.doubleToLongBits(this.getMaximumElevation()) == Double
 				.doubleToLongBits(other.getMaximumElevation())
 				&& Double.doubleToLongBits(this.getPrice()) == Double.doubleToLongBits(other.getPrice())
-				&& this.isTwinEngine() == other.isTwinEngine();
+				&& this.twinEngine == other.twinEngine;
 	}
 
 }
