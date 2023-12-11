@@ -4,7 +4,7 @@ public class WheeledTransportation {
 	private int numberOfWheels;
 	private double maximumSpeed;
 	private long serialNumber;
-	private static int serialNumberCounter;
+	private static long serialNumberCounter;
 
 	public int getNumberOfWheels() {
 		return numberOfWheels;
@@ -49,6 +49,11 @@ public class WheeledTransportation {
 		this.maximumSpeed = wt.maximumSpeed;
 		this.numberOfWheels = wt.numberOfWheels;
 		this.serialNumber = serialNumberCounter;
-		serialNumberCounter++;;
+		serialNumberCounter++;
+		;
+	}
+
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
 	}
 }

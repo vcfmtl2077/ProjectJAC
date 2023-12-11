@@ -4,7 +4,7 @@ public class Ferry {
 	private double maximumSpeed;
 	private double maximumLoad;
 	private long serialNumber;
-	private static int serialNumberCounter = 70000;
+	private static long serialNumberCounter = 70000;
 
 	public double getMaximumSpeed() {
 		return maximumSpeed;
@@ -52,4 +52,7 @@ public class Ferry {
 		this.serialNumberCounter++;
 	}
 
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
+	}
 }

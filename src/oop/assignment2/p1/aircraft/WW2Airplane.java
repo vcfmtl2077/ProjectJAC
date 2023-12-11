@@ -2,7 +2,7 @@ package oop.assignment2.p1.aircraft;
 
 public class WW2Airplane extends Aircraft {
 	private boolean twinEngine;
-	private static int serialNumberCounter = 80000;
+	private static long serialNumberCounter = 80000;
 
 	public boolean isTwinEngine() {
 		return twinEngine;
@@ -34,4 +34,7 @@ public class WW2Airplane extends Aircraft {
 		serialNumberCounter++;
 	}
 
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
+	}
 }

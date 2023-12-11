@@ -4,7 +4,7 @@ import oop.assignment2.p1.metro.Metro;
 
 public class Tram extends Metro {
 	private int yearOfCreation;
-	private static int serialNumberCounter = 30000;
+	private static long serialNumberCounter = 30000;
 
 	public int getYearOfCreation() {
 		return yearOfCreation;
@@ -33,6 +33,10 @@ public class Tram extends Metro {
 		this.yearOfCreation = tr.yearOfCreation;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
+	}
+
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
 	}
 
 }

@@ -8,7 +8,7 @@ public class Train extends WheeledTransportation {
 	private int numberOfVehicles;
 	private String startingStation;
 	private String destinationStation;
-	private static int serialNumberCounter = 10000;
+	private static long serialNumberCounter = 10000;
 
 	public int getNumberOfVehicles() {
 		return numberOfVehicles;
@@ -34,10 +34,6 @@ public class Train extends WheeledTransportation {
 		this.destinationStation = destinationStation;
 	}
 
-	private long getNextSerialNumber() {
-		return this.serialNumberCounter;
-	}
-
 	public Train() {
 		super();
 		this.setSerialNumber(this.serialNumberCounter);
@@ -46,7 +42,7 @@ public class Train extends WheeledTransportation {
 
 	public Train(int numberOfWheels, double maximumSpeed, int numberOfVehicles, String startingStation,
 			String destinationStation) {
-		super(numberOfWheels,maximumSpeed);
+		super(numberOfWheels, maximumSpeed);
 		this.numberOfVehicles = numberOfVehicles;
 		this.startingStation = startingStation;
 		this.destinationStation = destinationStation;
@@ -61,6 +57,10 @@ public class Train extends WheeledTransportation {
 		this.startingStation = tr.startingStation;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
+	}
+
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
 	}
 
 	@Override

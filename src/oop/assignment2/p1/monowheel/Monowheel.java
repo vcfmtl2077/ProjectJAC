@@ -4,7 +4,7 @@ import oop.assignment2.p1.transportation.WheeledTransportation;
 
 public class Monowheel extends WheeledTransportation {
 	private double maximumWeight;
-	private static int serialNumberCounter = 55000;
+	private static long serialNumberCounter = 55000;
 
 	public double getMaximumWeight() {
 		return maximumWeight;
@@ -32,5 +32,9 @@ public class Monowheel extends WheeledTransportation {
 		this.maximumWeight = mono.maximumWeight;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
+	}
+
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
 	}
 }

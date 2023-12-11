@@ -4,7 +4,7 @@ public class Aircraft {
 	private double price;
 	private double maximumElevation;
 	private long serialNumber;
-	private static int serialNumberCounter;
+	private static long serialNumberCounter;
 
 	public double getPrice() {
 		return price;
@@ -50,6 +50,10 @@ public class Aircraft {
 		this.maximumElevation = ac.maximumElevation;
 		this.serialNumber = serialNumberCounter;
 		serialNumberCounter++;
+	}
+	
+	public static long getNextSerialNumber() {
+		return serialNumberCounter;
 	}
 
 }
