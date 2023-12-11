@@ -1,5 +1,7 @@
 package oop.assignment2.p1.monowheel;
 
+import java.util.Objects;
+
 import oop.assignment2.p1.transportation.WheeledTransportation;
 
 public class Monowheel extends WheeledTransportation {
@@ -28,7 +30,7 @@ public class Monowheel extends WheeledTransportation {
 	}
 
 	public Monowheel(Monowheel mono) {
-		super();
+		super(mono);
 		this.maximumWeight = mono.maximumWeight;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
@@ -36,5 +38,26 @@ public class Monowheel extends WheeledTransportation {
 
 	public static long getNextSerialNumber() {
 		return serialNumberCounter;
+	}
+
+	@Override
+	public String toString() {
+		return "This Monowheel- serial #" + this.getSerialNumber() + " - has " + this.getNumberOfWheels()
+				+ " wheels, has a maximum speed of " + this.getMaximumSpeed() + " km/hr. and its maximum weight is "
+				+ this.getMaximumWeight();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Monowheel other = (Monowheel) obj;
+		return Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed())
+				&& this.getNumberOfWheels() == other.getNumberOfWheels() && Double
+						.doubleToLongBits(this.getMaximumWeight()) == Double.doubleToLongBits(other.getMaximumWeight());
 	}
 }

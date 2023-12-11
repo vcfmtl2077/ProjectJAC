@@ -1,5 +1,7 @@
 package oop.assignment2.p1.ferry;
 
+import java.util.Objects;
+
 public class Ferry {
 	private double maximumSpeed;
 	private double maximumLoad;
@@ -54,5 +56,24 @@ public class Ferry {
 
 	public static long getNextSerialNumber() {
 		return serialNumberCounter;
+	}
+
+	@Override
+	public String toString() {
+		return "This Ferry- serial #" + this.getSerialNumber() + " - has a maximum speed of " + this.getMaximumSpeed()
+				+ " km/hr, maximum load is " + this.getMaximumLoad();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ferry other = (Ferry) obj;
+		return Double.doubleToLongBits(this.getMaximumLoad()) == Double.doubleToLongBits(other.getMaximumLoad())
+				&& Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed());
 	}
 }

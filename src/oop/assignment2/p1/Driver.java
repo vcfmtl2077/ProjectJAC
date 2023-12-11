@@ -12,8 +12,8 @@ import oop.assignment2.p1.transportation.WheeledTransportation;
 public class Driver {
 
 	public static void main(String[] args) {
-		testObjectCreation();
-
+//		testObjectCreation();
+		testObjectTostringAndEquals();
 	}
 
 	private static void findLeastAndMostExpensiveAircraft(Object[] acs) {
@@ -78,5 +78,70 @@ public class Driver {
 		System.out.println("WW2Airplane object monowheel2 with SN: " + ww2Airplane2.getSerialNumber()+" next object SN is: "+ww2Airplane2.getNextSerialNumber());
 		WW2Airplane ww2Airplane3 = new WW2Airplane(ww2Airplane2);
 		System.out.println("WW2Airplane object monowheel3 with SN: " + ww2Airplane3.getSerialNumber()+" next object SN is: "+ww2Airplane3.getNextSerialNumber());
+	}
+	
+	private static void testObjectTostringAndEquals() {
+		// Test WheeledTransportation Object
+		WheeledTransportation wt1 = new WheeledTransportation();
+		WheeledTransportation wt2 = new WheeledTransportation(4,200);
+		WheeledTransportation wt3 = new WheeledTransportation(wt2);
+		System.out.println(wt2);
+		System.out.println("wt1 equals with wt2: "+wt1.equals(wt2));
+		System.out.println("wt3 equals with wt2: "+wt3.equals(wt2));
+		// Test Train Object
+		Train train1 = new Train();
+		Train train2 = new Train(20,300,5,"YUL","YVR");
+		Train train3 = new Train(train2);
+		System.out.println(train2);
+		System.out.println("train1 equals with train2: "+train1.equals(train2));
+		System.out.println("train3 equals with train2: "+train3.equals(train2));
+		// Test Metro Object
+		Metro metro1 = new Metro();
+		Metro metro2 = new Metro(20,70,4,"condordia","berri",30);
+		Metro metro3 = new Metro(metro2);
+		System.out.println(metro2);
+		System.out.println("metro2 equals with metro2: "+metro1.equals(metro2));
+		System.out.println("metro2 equals with metro2: "+metro2.equals(metro2));
+
+		// Test Tram Object
+		Tram tram1 = new Tram();
+		Tram tram2 = new Tram(20,70,4,"condordia","berri",30,2000);
+		Tram tram3 = new Tram(tram2);
+		System.out.println(tram2);
+		System.out.println("tram1 equals with tram2: "+tram1.equals(tram2));
+		System.out.println("tram3 equals with tram2: "+tram3.equals(tram2));
+		
+		// Test Monowheel Object
+		Monowheel monowheel1 = new Monowheel();
+		Monowheel monowheel2 = new Monowheel(1,30,100);
+		Monowheel monowheel3 = new Monowheel(monowheel2);
+		System.out.println(monowheel2);
+		System.out.println("monowheel1 equals with monowheel2: "+monowheel1.equals(monowheel2));
+		System.out.println("monowheel3 equals with monowheel2: "+monowheel3.equals(monowheel2));
+
+		// Test Ferry Object
+		Ferry ferry1 = new Ferry();
+		Ferry ferry2 = new Ferry(30,50000);
+		Ferry ferry3 = new Ferry(ferry2);
+		System.out.println(ferry2);
+		System.out.println("ferry1 equals with ferry2: "+ferry1.equals(ferry2));
+		System.out.println("ferry3 equals with ferry2: "+ferry3.equals(ferry2));
+
+		// Test Aircraft
+		Aircraft ac1 = new Aircraft();
+		Aircraft ac2 = new Aircraft(20000000,35000);
+		Aircraft ac3 = new Aircraft(ac2);
+		System.out.println(ac2);
+		System.out.println("ac1 equals with ac2: "+ac1.equals(ac2));
+		System.out.println("ac3 equals with ac2: "+ac3.equals(ac2));
+
+		// Test WW2Airplane Object
+		WW2Airplane ww2Airplane1 = new WW2Airplane();
+		WW2Airplane ww2Airplane2 = new WW2Airplane(200000,10000,true);
+		WW2Airplane ww2Airplane3 = new WW2Airplane(ww2Airplane2);
+		System.out.println(ww2Airplane2);
+		System.out.println("ww2Airplane1 equals with ww2Airplane2: "+ww2Airplane1.equals(ww2Airplane2));
+		System.out.println("ww2Airplane3 equals with ww2Airplane2: "+ww2Airplane3.equals(ww2Airplane2));
+		
 	}
 }

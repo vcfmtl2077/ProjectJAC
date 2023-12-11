@@ -1,5 +1,7 @@
 package oop.assignment2.p1.metro;
 
+import java.util.Objects;
+
 import oop.assignment2.p1.train.Train;
 
 public class Metro extends Train {
@@ -29,7 +31,7 @@ public class Metro extends Train {
 	}
 
 	public Metro(Metro mt) {
-		super();
+		super(mt);
 		this.totalNumberOfStops = mt.totalNumberOfStops;
 		this.setSerialNumber(this.serialNumberCounter);
 		this.serialNumberCounter++;
@@ -38,4 +40,31 @@ public class Metro extends Train {
 	public static long getNextSerialNumber() {
 		return serialNumberCounter;
 	}
+
+	@Override
+	public String toString() {
+		return "This Metro- serial #" + this.getSerialNumber() + " - has " + this.getNumberOfWheels()
+				+ " wheels, has a maximum speed of " + this.getMaximumSpeed() + " km/hr. It has "
+				+ this.getNumberOfVehicles() + " vehicles, its starting and destination stations are "
+				+ this.getStartingStation() + " and " + this.getDestinationStation() + " and it has "
+				+ this.getTotalNumberOfStops() + " total stops.";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Metro other = (Metro) obj;
+		return Objects.equals(this.getDestinationStation(), other.getDestinationStation())
+				&& this.getNumberOfVehicles() == other.getNumberOfVehicles()
+				&& Objects.equals(this.getStartingStation(), other.getStartingStation())
+				&& Double.doubleToLongBits(this.getMaximumSpeed()) == Double.doubleToLongBits(other.getMaximumSpeed())
+				&& this.getNumberOfWheels() == other.getNumberOfWheels()
+				&& this.getTotalNumberOfStops() == other.getTotalNumberOfStops();
+	}
+
 }

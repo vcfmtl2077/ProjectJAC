@@ -51,7 +51,7 @@ public class Train extends WheeledTransportation {
 	}
 
 	public Train(Train tr) {
-		super();
+		super(tr);
 		this.destinationStation = tr.destinationStation;
 		this.numberOfVehicles = tr.numberOfVehicles;
 		this.startingStation = tr.startingStation;
@@ -65,8 +65,10 @@ public class Train extends WheeledTransportation {
 
 	@Override
 	public String toString() {
-		return "Train [numberOfVehicles=" + numberOfVehicles + ", startingStation=" + startingStation
-				+ ", destinationStation=" + destinationStation + "]";
+		return "This Train- serial #" + this.getSerialNumber() + " - has " + this.getNumberOfWheels()
+				+ " wheels, has a maximum speed of " + this.getMaximumSpeed() + " km/hr. It has "
+				+ this.getNumberOfVehicles() + " vehicles and its starting and destination stations are "
+				+ this.getStartingStation() + " and " + this.getDestinationStation();
 	}
 
 	@Override
@@ -78,8 +80,14 @@ public class Train extends WheeledTransportation {
 		if (getClass() != obj.getClass())
 			return false;
 		Train other = (Train) obj;
-		return Objects.equals(destinationStation, other.destinationStation)
-				&& numberOfVehicles == other.numberOfVehicles && Objects.equals(startingStation, other.startingStation);
+		double i = this.getMaximumSpeed();
+		double j = other.getMaximumSpeed();
+		
+		return Objects.equals(this.getDestinationStation(), other.getDestinationStation())
+				&& this.getNumberOfVehicles() == other.getNumberOfVehicles()
+				&& Objects.equals(this.getStartingStation(), other.getStartingStation())
+				&& this.getMaximumSpeed() == other.getMaximumSpeed()
+				&& this.getNumberOfWheels() == other.getNumberOfWheels();
 	}
 
 }
