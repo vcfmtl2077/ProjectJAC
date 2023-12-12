@@ -12,8 +12,8 @@ import oop.assignment2.p1.transportation.WheeledTransportation;
 public class Driver {
 
 	public static void main(String[] args) {
-//		testObjectCreation();
-//		testObjectTostringAndEquals();
+		testObjectCreation();
+		testObjectTostringAndEquals();
 
 		Object[] obja = objWithAircraft();
 		Object[] objb = objWithoutAircraft();
