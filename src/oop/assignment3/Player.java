@@ -33,5 +33,10 @@ public class Player {
 		this.position = position;
 	}
 	
+	public void move(int step) {
+		this.position += step;
+	}
+	
 
 }
+;

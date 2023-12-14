@@ -11,18 +11,30 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class LadderAndSnake {
+	private static int[] ladder;
+	private static int[] snake;
 
 	public static void main(String[] args) {
 		Player[] playerArray = welcomeCheck();
-		int[] ladder = initLadder();
-		int[] snake = initSnake();
-		shuffle(playerArray);
-		
+
+		play(playerArray);
+
 		System.out.println("Now, GAME  START ~~~~~~~~~~~");
-		
-		while(true) {
-			
+		int round = 1;
+		while (true) {
+			System.out.println("**	Round " + round + " Start. All player start flipping dice and moving.");
+			for (int i = 0; i < playerArray.length; i++) {
+				int dice = flipDice();
+				System.out.print("•	Player " + playerArray[i].getId() + " got a dice value of " + dice + "; ");
+				playerArray[i].setDiceFlip(dice);
+				playerArray[i].move(dice);
+				playerArray[i] = verifyPlayerPosition(playerArray[i]);
+
+			}
+			System.out.println("•	Game not over; flipping again \n");
+			round++;
 		}
+
 	}
 
 	private static int flipDice() {
@@ -30,8 +42,10 @@ public class LadderAndSnake {
 		return dice.nextInt(1, 6);
 	}
 
-	private static void play() {
-
+	private static void play(Player[] playerArray) {
+		ladder = initLadder();
+		snake = initSnake();
+		shuffle(playerArray);
 	}
 
 	private static Player[] welcomeCheck() {
@@ -89,24 +103,54 @@ public class LadderAndSnake {
 
 		return ladder;
 	}
-	
+
 	private static void shuffle(Player[] playerArray) {
 		System.out.println("Start shuffling.....");
-		for(int i=0;i<playerArray.length;i++) {
+		for (int i = 0; i < playerArray.length; i++) {
 			int dice = flipDice();
-			System.out.println("Player id: "+playerArray[i].getId()+" got a dice value of "+dice);
+			System.out.println("Player id: " + playerArray[i].getId() + " got a dice value of " + dice);
 			playerArray[i].setDiceFlip(dice);
 		}
-		Arrays.sort(playerArray,new Comparator<Player>() {
+		Arrays.sort(playerArray, new Comparator<Player>() {
 			@Override
-			public int compare(final Player p1,Player p2) {
-				return Integer.signum(0-(p1.getDiceFlip()-p2.getDiceFlip()));
+			public int compare(final Player p1, Player p2) {
+				return Integer.signum(0 - (p1.getDiceFlip() - p2.getDiceFlip()));
 			}
-			
+
 		});
 		System.out.print("Reached final decision on order of playing: ");
-		for(int i=0;i<playerArray.length;i++) {
-			System.out.print("Player"+playerArray[i].getId()+" ");
+		for (int i = 0; i < playerArray.length; i++) {
+			System.out.print("Player" + playerArray[i].getId() + " ");
 		}
+	}
+
+	private static Player verifyPlayerPosition(Player player) {
+		if (player.getPosition() == 100) {
+			System.out.println();
+			System.out.println("•	Game Over! Player " + player.getId() + " arrived at square " + player.getPosition()
+					+ " successfully!");
+			System.exit(0);
+		} else if (player.getPosition() < 100) {
+			player = checkLadderAndSnake(player);
+		} else {
+			int overStep = player.getPosition() - 100;
+			player.setPosition(100 - overStep);
+			player = checkLadderAndSnake(player);
+		}
+		return player;
+	}
+
+	private static Player checkLadderAndSnake(Player player) {
+		int position = player.getPosition();
+		if (ladder[position] != 0) {
+			System.out.print("gone to square " + position + " then up to square " + ladder[position] + "\n");
+			player.setPosition(ladder[position]);
+		} else if (snake[position] != 0) {
+			System.out.print("gone to square " + position + " then down to square " + snake[position] + "\n");
+			player.setPosition(snake[position]);
+		} else {
+			System.out.print("now in square " + position + "\n");
+		}
+		return player;
 	}
 }
