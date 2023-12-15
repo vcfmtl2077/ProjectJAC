@@ -13,9 +13,10 @@ import java.util.Scanner;
 public class LadderAndSnake {
 	private static int[] ladder;
 	private static int[] snake;
+	private static Player[] playerArray;
 
 	public static void main(String[] args) {
-		Player[] playerArray = welcomeCheck();
+		playerArray = welcomeCheck();
 
 		play(playerArray);
 
@@ -104,24 +105,58 @@ public class LadderAndSnake {
 		return ladder;
 	}
 
-	private static void shuffle(Player[] playerArray) {
+	private static void shuffle(Player[] pa) {
 		System.out.println("Start shuffling.....");
-		for (int i = 0; i < playerArray.length; i++) {
+		for (int i = 0; i < pa.length; i++) {
 			int dice = flipDice();
-			System.out.println("Player id: " + playerArray[i].getId() + " got a dice value of " + dice);
-			playerArray[i].setDiceFlip(dice);
+			System.out.println("Player id: " + pa[i].getId() + " got a dice value of " + dice);
+			pa[i].setDiceFlip(dice);
 		}
-		Arrays.sort(playerArray, new Comparator<Player>() {
+		checkTie(pa);
+		Arrays.sort(pa, new Comparator<Player>() {
 			@Override
 			public int compare(final Player p1, Player p2) {
-				return Integer.signum(0 - (p1.getDiceFlip() - p2.getDiceFlip()));
+				return Integer.signum(0 - (p1.getDiceFlip() - p2.getDiceFlip())); // reverse comparison
 			}
 
 		});
 		System.out.print("Reached final decision on order of playing: ");
-		for (int i = 0; i < playerArray.length; i++) {
-			System.out.print("Player" + playerArray[i].getId() + " ");
+		for (int i = 0; i < pa.length; i++) {
+			System.out.print("Player" + pa[i].getId() + " ");
 		}
+	}
+
+	private static void checkTie(Player[] pa) {
+		Player[] tieArray = new Player[pa.length];
+		for (int i = 0; i < pa.length; i++) {
+			for (int j = pa.length - 1; j > i; j--) {
+				if (pa[i].getDiceFlip() == pa[j].getDiceFlip()) {
+					tieArray[i] = pa[i];
+					tieArray[j] = pa[j];
+					i++;
+					j--;
+				}
+			}
+		}
+
+		if (getActualLength(tieArray) != 0) {
+			Player[] ta = trimArray(tieArray);
+			String namelist = "";
+			for (int i = 0; i < ta.length; i++) {
+				namelist += "Player " + ta[i].getId() + " ";
+			}
+			System.out.println("A tie was achieved within " + namelist + ". Attempting to break the tie");
+			for (int i = 0; i < ta.length; i++) {
+				int dice = flipDice();
+				ta[i].setDiceFlip(dice);
+				System.out.println("Player id: " + ta[i].getId() + " got a dice value of " + dice);
+				updatePlayerArray(ta[i]);
+			}
+			checkTie(ta);
+		} else {
+			return;
+		}
+
 	}
 
 	private static Player verifyPlayerPosition(Player player) {
@@ -151,6 +186,44 @@ public class LadderAndSnake {
 		} else {
 			System.out.print("now in square " + position + "\n");
 		}
+		// Check wining condition after update position
+		if (player.getPosition() == 100) {
+			System.out.println();
+			System.out.println("•	Game Over! Player " + player.getId() + " arrived at square " + player.getPosition()
+					+ " successfully!");
+			System.exit(0);
+		}
 		return player;
+	}
+
+	private static int getActualLength(Player[] pa) {
+		int l = 0;
+		for (int i = 0; i < pa.length; i++) {
+			if (pa[i] != null) {
+				l++;
+			}
+		}
+		return l;
+	}
+
+	private static Player[] trimArray(Player[] pa) {
+		int length = getActualLength(pa);
+		Player[] tmp = new Player[length];
+		int j = 0;
+		for (int i = 0; i < pa.length; i++) {
+			if (pa[i] != null) {
+				tmp[j] = pa[i];
+				j++;
+			}
+		}
+		return tmp;
+	}
+
+	private static void updatePlayerArray(Player p) {
+		for (int i = 0; i < playerArray.length; i++) {
+			if (playerArray[i].getId() == p.getId()) {
+				playerArray[i] = p;
+			}
+		}
 	}
 }
