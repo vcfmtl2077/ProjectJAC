@@ -120,10 +120,17 @@ public class LadderAndSnake {
 			}
 
 		});
+		
+		System.out.println("Finally, all players' dice values are:");
+		for(int i=0;i<pa.length;i++) {
+			System.out.println("Player "+pa[i].getId()+" get dice value: "+pa[i].getDiceFlip());
+		}
+		
 		System.out.print("Reached final decision on order of playing: ");
 		for (int i = 0; i < pa.length; i++) {
 			System.out.print("Player" + pa[i].getId() + " ");
 		}
+		System.out.println();
 	}
 
 	private static void checkTie(Player[] pa) {
@@ -152,7 +159,7 @@ public class LadderAndSnake {
 				System.out.println("Player id: " + ta[i].getId() + " got a dice value of " + dice);
 				updatePlayerArray(ta[i]);
 			}
-			checkTie(ta);
+			checkTie(playerArray);
 		} else {
 			return;
 		}
