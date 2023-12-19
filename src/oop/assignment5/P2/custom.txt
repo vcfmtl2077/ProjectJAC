@@ -1,0 +1,6 @@
+
+Hello Java
+5. Challenge:
+Implement a method that takes a filename and a String as input and writes the String to the specified file without using buffers.
+Test this method by writing a custom message to a new file named "custom.txt."
+End of the assignment.

@@ -1,0 +1,6 @@
+Hello, this is line 1.
+Java File I/O is interesting!
+End of the assignment.
+
+Appending new line.
+File I/O without buffers.
